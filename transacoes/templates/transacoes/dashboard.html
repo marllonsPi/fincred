@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Transações</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Dashboard de Transações</h1>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2 class="card-title">Total de Transações</h2>
+                        <p class="card-text">{{ total_transacoes }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2 class="card-title">Valor Total Recebido</h2>
+                        <p class="card-text">R$ {{ total_valor|floatformat:2 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2 class="card-title">Transações Aprovadas</h2>
+                        <p class="card-text">{{ total_aprovado }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Transações Recentes</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Tipo</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transacao in transacoes_recentes %}
+                        <tr>
+                            <td>{{ transacao.data|date:"d/m/Y H:i" }}</td>
+                            <td>R$ {{ transacao.valor|floatformat:2 }}</td>
+                            <td>{{ transacao.tipo }}</td>
+                            <td>{{ transacao.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

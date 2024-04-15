@@ -1,0 +1,14 @@
+<!-- payments/templates/payments/charge_fail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Falha no Pagamento</title>
+</head>
+<body>
+    <h1>Falha no Pagamento</h1>
+    <p>Ocorreu um erro ao processar seu pagamento: {{ error }}</p>
+    <a href="{% url 'payments:test_charge' %}">Tentar Novamente</a>
+</body>
+</html>
+

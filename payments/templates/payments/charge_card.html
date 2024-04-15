@@ -1,0 +1,16 @@
+<!-- payments/templates/payments/charge_card.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charge Card</title>
+</head>
+<body>
+    <form action="{% url 'payments:charge_card' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Payment</button>
+    </form>
+</body>
+</html>
+
